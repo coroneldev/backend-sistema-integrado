@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('rh_cl_horarios', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 255)->nullable();
+            $table->string('hora_uno', 20)->nullable();
+            $table->string('hora_dos', 20)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
