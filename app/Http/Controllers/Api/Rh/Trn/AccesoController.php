@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Rh\Trn;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Acceso;
 
 class AccesoController extends Controller
 {
@@ -14,7 +15,14 @@ class AccesoController extends Controller
      */
     public function index()
     {
-        //
+        $accesos = Acceso::all();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro de accesos recuperados exitosamente',
+            'data'      => $accesos
+        ], 200);
+        
     }
 
     /**
@@ -25,7 +33,18 @@ class AccesoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $acceso = new Acceso();
+        $acceso->user_id        = $request->user_id;
+        $acceso->sistema_id     = $request->sistema_id;
+        $acceso->roles_id       = $request->roles_id;
+        $acceso->vigente        = $request->vigente;
+        $acceso->save();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro creado exitosamente',
+            'data'      => $acceso
+        ], 201);
     }
 
     /**
@@ -36,7 +55,20 @@ class AccesoController extends Controller
      */
     public function show($id)
     {
-        //
+        $acceso = Acceso::find($id);
+
+        if (is_null($acceso)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Solicitud de registro no encontrado'
+            ], 200);
+        }
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Solicitud de registro recuperado exitosamente',
+            'data'      => $acceso
+        ], 200);
     }
 
     /**
@@ -48,7 +80,26 @@ class AccesoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $acceso = Acceso::find($id);
+
+        if (is_null($acceso)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Registro no encontrado'
+            ], 200);
+        }
+
+        $acceso->user_id        = $request->user_id;
+        $acceso->sistema_id     = $request->sistema_id;
+        $acceso->roles_id       = $request->roles_id;
+        $acceso->vigente        = $request->vigente;
+        $acceso->save();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro modificado exitosamente',
+            'data'      => $acceso
+        ], 200);
     }
 
     /**
@@ -59,6 +110,29 @@ class AccesoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $acceso = Acceso::find($id);
+
+        if (is_null($acceso)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Solicitud no encontrado'
+            ], 200);
+        }
+        $acceso->delete();
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Solicitud eliminado exitosamente',
+            'data'      => $acceso
+        ], 200);
+    }
+
+    public function accesoIdUsuario($user_id)
+    {
+        $usuarioPregistrado = Acceso::where('user_id', $user_id)->with('usuario', 'rol', 'sistema')->firstb();
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro de persona preregistrada, recuperada exitosamente',
+            'data'      => $usuarioPregistrado
+        ], 200);
     }
 }
