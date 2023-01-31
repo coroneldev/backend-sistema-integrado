@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rh_trn_parerntescos', function (Blueprint $table) {
+        Schema::create('rh_trn_parentescos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('persona_id')->nullable();
             $table->foreign('persona_id')->references('id')->on('rh_trn_personas');
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rh_trn_parerntescos');
+        Schema::dropIfExists('rh_trn_parentescos');
     }
 };
