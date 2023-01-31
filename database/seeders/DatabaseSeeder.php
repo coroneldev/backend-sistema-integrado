@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(RhClSistemaSeeder::class);
+        $this->call(RhClMenuSeeder::class);
         $this->call(RhClRolSeeder::class);
         $this->call(RhClEstadoSeeder::class);
         $this->call(RhClEstadoCivilSeeder::class);
