@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rh_cl_categorias', function (Blueprint $table) {
+        Schema::create('rh_cl_categorias_viajes', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion', 255)->nullable();
             $table->softDeletes();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rh_cl_categorias');
+        Schema::dropIfExists('rh_cl_categorias_viajes');
     }
 };
