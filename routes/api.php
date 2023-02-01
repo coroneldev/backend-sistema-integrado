@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Rh\Trn\UserController;
 
 use App\Http\Controllers\Api\Rh\Cl\SistemaController;
-use App\Http\Controllers\Api\Rh\Cl\MenuController;
+use App\Http\Controllers\Api\Rh\Trn\MenuController;
 use App\Http\Controllers\Api\Rh\Cl\RolController;
 use App\Http\Controllers\Api\Rh\Trn\AccesoController;
 

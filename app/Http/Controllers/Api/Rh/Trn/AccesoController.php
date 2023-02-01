@@ -44,8 +44,8 @@ class AccesoController extends Controller
     {
         $acceso = new Acceso();
         $acceso->user_id        = $request->user_id;
-        $acceso->sistema_id     = $request->sistema_id;
-        $acceso->roles_id       = $request->roles_id;
+        $acceso->menu_id        = $request->menu_id;
+        $acceso->rol_id         = $request->rol_id;
         $acceso->vigente        = $request->vigente;
         $acceso->save();
 
@@ -99,8 +99,8 @@ class AccesoController extends Controller
         }
 
         $acceso->user_id        = $request->user_id;
-        $acceso->sistema_id     = $request->sistema_id;
-        $acceso->roles_id       = $request->roles_id;
+        $acceso->menu_id        = $request->menu_id;
+        $acceso->rol_id         = $request->rol_id;
         $acceso->vigente        = $request->vigente;
         $acceso->save();
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\Rh\Cl;
+namespace App\Http\Controllers\Api\Rh\Trn;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Rh\Cl\Menu;
+use App\Models\Rh\Trn\Menu;
 
 class MenuController extends Controller
 {

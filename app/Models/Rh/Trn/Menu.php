@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Rh\Cl;
+namespace App\Models\Rh\Trn;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,5 +11,5 @@ class Menu extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'rh_cl_menus';
+    protected $table = 'rh_trn_menus';
 }
