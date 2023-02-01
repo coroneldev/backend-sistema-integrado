@@ -41,7 +41,16 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $menu = new Menu();
+        $menu->nombre             = $request->nombre;
+        $menu->vigente            = $request->vigente;
+        $menu->save();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro creado exitosamente',
+            'data'      => $menu
+        ], 201);
     }
 
     /**
@@ -52,7 +61,20 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+        $menu = Menu::find($id);
+
+        if (is_null($menu)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Solicitud de registro no encontrado'
+            ], 200);
+        }
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Solicitud de registro recuperado exitosamente',
+            'data'      => $menu
+        ], 200);
     }
 
     /**
@@ -64,7 +86,24 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::find($id);
+
+        if (is_null($menu)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Registro no encontrado'
+            ], 200);
+        }
+
+        $menu->nombre             = $request->nombre;
+        $menu->vigente            = $request->vigente;
+        $menu->save();
+
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Registro modificado exitosamente',
+            'data'      => $menu
+        ], 200);
     }
 
     /**
@@ -75,6 +114,19 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+
+        if (is_null($menu)) {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Solicitud no encontrado'
+            ], 200);
+        }
+        $menu->delete();
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Solicitud eliminado exitosamente',
+            'data'      => $menu
+        ], 200);
     }
 }

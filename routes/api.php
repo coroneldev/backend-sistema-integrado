@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\Rh\Trn\UserController;
 
 use App\Http\Controllers\Api\Rh\Cl\SistemaController;
 use App\Http\Controllers\Api\Rh\Cl\MenuController;
@@ -31,6 +31,8 @@ Route::post('usuarios/ingresar', [UserController::class, 'ingresar']);
 Route::prefix('sys')->group(function () {
 
     Route::get('usuarios', [UserController::class, 'index']);
+
+    Route::get('/sistemas', [SistemaController::class, 'index']);
     Route::post('/sistemas', [SistemaController::class, 'store']);
     Route::get('/sistemas/{id}', [SistemaController::class, 'show']);
     Route::put('/sistemas/{id}', [SistemaController::class, 'update']);

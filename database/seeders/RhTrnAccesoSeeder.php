@@ -31,29 +31,6 @@ class RhTrnAccesoSeeder extends Seeder
             'created_at'               => date('Y-m-d H:i:s'),
             'updated_at'               => date('Y-m-d H:i:s'),
         ]);
-        DB::table('rh_trn_accesos')->insert([
-            'user_id'                  => 2,
-            'sistema_id'               => 2,
-            'roles_id'                 => 2,
-            'vigente'                  => 1,
-            'created_at'               => date('Y-m-d H:i:s'),
-            'updated_at'               => date('Y-m-d H:i:s'),
-        ]);
-        DB::table('rh_trn_accesos')->insert([
-            'user_id'                  => 3,
-            'sistema_id'               => 3,
-            'roles_id'                 => 2,
-            'vigente'                  => 1,
-            'created_at'               => date('Y-m-d H:i:s'),
-            'updated_at'               => date('Y-m-d H:i:s'),
-        ]);
-        DB::table('rh_trn_accesos')->insert([
-            'user_id'                  => 4,
-            'sistema_id'               => 4,
-            'roles_id'                 => 2,
-            'vigente'                  => 1,
-            'created_at'               => date('Y-m-d H:i:s'),
-            'updated_at'               => date('Y-m-d H:i:s'),
-        ]);
+
     }
 }
