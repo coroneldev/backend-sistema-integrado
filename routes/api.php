@@ -33,6 +33,8 @@ use App\Http\Controllers\Api\Rh\Cl\TipoContratoController;
 use App\Http\Controllers\Api\Rh\Cl\IdiomaController;
 
 /*Transacciones*/
+use App\Http\Controllers\Api\Rh\Trn\PersonaController;
+use App\Http\Controllers\Api\Rh\Trn\ParentescosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +87,7 @@ Route::prefix('sys')->group(function () {
 
 Route::prefix('rh')->group(function () {
 
+    /*Clafificadores*/
     Route::get('/estados-civiles', [EstadoCivilController::class, 'index']);
     Route::post('/estados-civiles', [EstadoCivilController::class, 'store']);
     Route::get('/estados-civiles/{id}', [EstadoCivilController::class, 'show']);
@@ -193,6 +196,26 @@ Route::prefix('rh')->group(function () {
     Route::get('/idiomas/{id}', [IdiomaController::class, 'show']);
     Route::put('/idiomas/{id}', [IdiomaController::class, 'update']);
     Route::delete('/idiomas/{id}', [IdiomaController::class, 'destroy']);
+
+    /*Transacciones*/ 
+    /*Registro de Personas*/
+    Route::get('/personas', [PersonaController::class, 'index']);
+    Route::post('/personas', [PersonaController::class, 'store']);
+    Route::get('/personas/{id}', [PersonaController::class, 'show']);
+    Route::put('/personas/{id}', [PersonaController::class, 'update']);
+    Route::delete('/personas/{id}', [PersonaController::class, 'destroy']);
+    Route::get('/personas/verifica-finalizado/{estFin}', [PersonaController::class, 'datosRegistrados']);
+    Route::get('/personas/administrador-verifica/{estFin}', [PersonaController::class, 'revisadoAdmin']);
+    Route::get('/personas/usuario/{usuario_id}', [PersonaController::class, 'personaUsuarioId']);
+
+    /*Relacion Personal*/
+    Route::get('/parentescos-personas', [ParentescosController::class, 'index']);
+    Route::post('/parentescos-personas', [ParentescosController::class, 'store']);
+    Route::get('/parentescos-personas/{id}', [ParentescosController::class, 'show']);
+    Route::put('/parentescos-personas/{id}', [ParentescosController::class, 'update']);
+    Route::delete('/parentescos-personas/{id}', [ParentescosController::class, 'destroy']);
+    Route::get('/parentescos-personas/persona/{persona_id}', [ParentescosController::class, 'parentescoPersonaId']);
+
 
 });
 

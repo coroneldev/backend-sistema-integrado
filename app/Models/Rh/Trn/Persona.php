@@ -43,6 +43,7 @@ class Persona extends Model
         'identificador_dato_laboral',
     ];
 
+    /*revisar  la funcion de usuario */
     public function usuario()
     {
         return $this->belongsTo(User::class, 'user_id');

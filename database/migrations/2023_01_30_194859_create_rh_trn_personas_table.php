@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('rh_trn_personas', function (Blueprint $table) {
             $table->id();
-          /*  $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');*/
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('estado_civil_id')->nullable();
             $table->foreign('estado_civil_id')->references('id')->on('rh_cl_estados_civiles');
             $table->unsignedBigInteger('genero_id')->nullable();

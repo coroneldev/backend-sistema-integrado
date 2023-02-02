@@ -16,7 +16,7 @@ class RhTrnPersonaSeeder extends Seeder
     public function run()
     {
         DB::table('rh_trn_personas')->insert([
-           // 'user_id'               =>   1,
+            'user_id'               =>   1,
             'estado_civil_id'       =>   1,
             'genero_id'             =>   1,
             'pais_id'               =>   1,
