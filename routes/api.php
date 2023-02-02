@@ -23,6 +23,16 @@ use App\Http\Controllers\Api\Rh\Cl\InstitucionController;
 use App\Http\Controllers\Api\Rh\Cl\NivelEstudioController;
 use App\Http\Controllers\Api\Rh\Cl\EstadoController;
 use App\Http\Controllers\Api\Rh\Cl\CategoriaViajeController;
+use App\Http\Controllers\Api\Rh\Cl\ClasificacionController;
+use App\Http\Controllers\Api\Rh\Cl\EstructuraOrganizacionalController;
+use App\Http\Controllers\Api\Rh\Cl\HorarioController;
+use App\Http\Controllers\Api\Rh\Cl\IdentificadorController;
+use App\Http\Controllers\Api\Rh\Cl\OrganismoFinanciadorController;
+use App\Http\Controllers\Api\Rh\Cl\PuestoController;
+use App\Http\Controllers\Api\Rh\Cl\TipoContratoController;
+use App\Http\Controllers\Api\Rh\Cl\IdiomaController;
+
+/*Transacciones*/
 
 /*
 |--------------------------------------------------------------------------
@@ -136,7 +146,53 @@ Route::prefix('rh')->group(function () {
     Route::put('/catetgorias-viaje/{id}', [CategoriaViajeController::class, 'update']);
     Route::delete('/catetgorias-viaje/{id}', [CategoriaViajeController::class, 'destroy']);
 
+    Route::get('/clasificaciones', [ClasificacionController::class, 'index']);
+    Route::post('/clasificaciones', [ClasificacionController::class, 'store']);
+    Route::get('/clasificaciones/{id}', [ClasificacionController::class, 'show']);
+    Route::put('/clasificaciones/{id}', [ClasificacionController::class, 'update']);
+    Route::delete('/clasificaciones/{id}', [ClasificacionController::class, 'destroy']);
+    
+    Route::get('/estructuras-organizacionales', [EstructuraOrganizacionalController::class, 'index']);
+    Route::post('/estructuras-organizacionales', [EstructuraOrganizacionalController::class, 'store']);
+    Route::get('/estructuras-organizacionales/{id}', [EstructuraOrganizacionalController::class, 'show']);
+    Route::put('/estructuras-organizacionales/{id}', [EstructuraOrganizacionalController::class, 'update']);
+    Route::delete('/estructuras-organizacionales/{id}', [EstructuraOrganizacionalController::class, 'destroy']);
 
+    Route::get('/horarios', [HorarioController::class, 'index']);
+    Route::post('/horarios', [HorarioController::class, 'store']);
+    Route::get('/horarios/{id}', [HorarioController::class, 'show']);
+    Route::put('/horarios/{id}', [HorarioController::class, 'update']);
+    Route::delete('/horarios/{id}', [HorarioController::class, 'destroy']);
+
+    Route::get('/identificadores', [IdentificadorController::class, 'index']);
+    Route::post('/identificadores', [IdentificadorController::class, 'store']);
+    Route::get('/identificadores/{id}', [IdentificadorController::class, 'show']);
+    Route::put('/identificadores/{id}', [IdentificadorController::class, 'update']);
+    Route::delete('/identificadores/{id}', [IdentificadorController::class, 'destroy']);
+
+    Route::get('/organismos-finaciadores', [OrganismoFinanciadorController::class, 'index']);
+    Route::post('/organismos-finaciadores', [OrganismoFinanciadorController::class, 'store']);
+    Route::get('/organismos-finaciadores/{id}', [OrganismoFinanciadorController::class, 'show']);
+    Route::put('/organismos-finaciadores/{id}', [OrganismoFinanciadorController::class, 'update']);
+    Route::delete('/organismos-finaciadores/{id}', [OrganismoFinanciadorController::class, 'destroy']);
+
+    Route::get('/puestos', [PuestoController::class, 'index']);
+    Route::post('/puestos', [PuestoController::class, 'store']);
+    Route::get('/puestos/{id}', [PuestoController::class, 'show']);
+    Route::put('/puestos/{id}', [PuestoController::class, 'update']);
+    Route::delete('/puestos/{id}', [PuestoController::class, 'destroy']);
+
+    Route::get('/tipos-contratos', [TipoContratoController::class, 'index']);
+    Route::post('/tipos-contratos', [TipoContratoController::class, 'store']);
+    Route::get('/tipos-contratos/{id}', [TipoContratoController::class, 'show']);
+    Route::put('/tipos-contratos/{id}', [TipoContratoController::class, 'update']);
+    Route::delete('/tipos-contratos/{id}', [TipoContratoController::class, 'destroy']);
+
+    Route::get('/idiomas', [IdiomaController::class, 'index']);
+    Route::post('/idiomas', [IdiomaController::class, 'store']);
+    Route::get('/idiomas/{id}', [IdiomaController::class, 'show']);
+    Route::put('/idiomas/{id}', [IdiomaController::class, 'update']);
+    Route::delete('/idiomas/{id}', [IdiomaController::class, 'destroy']);
 
 });
 

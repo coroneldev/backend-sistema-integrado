@@ -4,10 +4,19 @@ namespace App\Http\Controllers\Api\Rh\Cl;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Puesto;
+use App\Models\Rh\Cl\Puesto;
 
 class PuestoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only('index');
+        $this->middleware('auth:sanctum')->only('store');
+        $this->middleware('auth:sanctum')->only('show');
+        $this->middleware('auth:sanctum')->only('update');
+        $this->middleware('auth:sanctum')->only('destroy');
+
+    }
     /**
      * Display a listing of the resource.
      *
