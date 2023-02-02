@@ -18,7 +18,7 @@ class RhTrnDocumentoDigitalSeeder extends Seeder
         DB::table('rh_trn_documentos_digitales')->insert([
             'tipo_documento_id'              => 1,
             'persona_id'                     => 1,
-            //'usuario_validador_id'           => 1,
+            'usuario_validador_id'           => 1,
             'id_registro_tabla'              => 1,
             'enlace'                         => 'GDFGDHDJFHJKJJH64565423525',
             'nombre_archivo'                 => 'foto.jpg',

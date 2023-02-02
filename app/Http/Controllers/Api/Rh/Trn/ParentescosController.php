@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Rh\Trn;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rh\Trn\Parentesco;
+use Illuminate\Support\Facades\Validator;
 
 class ParentescosController extends Controller
 {

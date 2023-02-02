@@ -35,6 +35,9 @@ use App\Http\Controllers\Api\Rh\Cl\IdiomaController;
 /*Transacciones*/
 use App\Http\Controllers\Api\Rh\Trn\PersonaController;
 use App\Http\Controllers\Api\Rh\Trn\ParentescosController;
+use App\Http\Controllers\Api\Rh\Trn\DeclaracionJuradaController;
+use App\Http\Controllers\Api\Rh\Trn\DocumentoDigitalController;
+use App\Http\Controllers\Api\Rh\Trn\CursoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -208,13 +211,36 @@ Route::prefix('rh')->group(function () {
     Route::get('/personas/administrador-verifica/{estFin}', [PersonaController::class, 'revisadoAdmin']);
     Route::get('/personas/usuario/{usuario_id}', [PersonaController::class, 'personaUsuarioId']);
 
-    /*Relacion Personal*/
     Route::get('/parentescos-personas', [ParentescosController::class, 'index']);
     Route::post('/parentescos-personas', [ParentescosController::class, 'store']);
     Route::get('/parentescos-personas/{id}', [ParentescosController::class, 'show']);
     Route::put('/parentescos-personas/{id}', [ParentescosController::class, 'update']);
     Route::delete('/parentescos-personas/{id}', [ParentescosController::class, 'destroy']);
     Route::get('/parentescos-personas/persona/{persona_id}', [ParentescosController::class, 'parentescoPersonaId']);
+
+    Route::get('/declaraciones-juradas', [DeclaracionJuradaController::class, 'index']);
+    Route::post('/declaraciones-juradas', [DeclaracionJuradaController::class, 'store']);
+    Route::get('/declaraciones-juradas/{id}', [DeclaracionJuradaController::class, 'show']);
+    Route::put('/declaraciones-juradas/{id}', [DeclaracionJuradaController::class, 'update']);
+    Route::delete('/declaraciones-juradas/{id}', [DeclaracionJuradaController::class, 'destroy']);
+    Route::get('/declaraciones-juradas/persona/{persona_id}', [DeclaracionJuradaController::class, 'declaracionJuaradaPersonaId']);
+
+    Route::get('/documentos', [DocumentoDigitalController::class, 'index']);
+    Route::post('/documentos', [DocumentoDigitalController::class, 'store']);
+    Route::get('/documentos/{id}', [DocumentoDigitalController::class, 'show']);
+    Route::put('/documentos/{id}', [DocumentoDigitalController::class, 'update']);
+    Route::delete('/documentos/{id}', [DocumentoDigitalController::class, 'destroy']);
+    Route::post('/documentos/adjunto/{documento_id}', [DocumentoDigitalController::class, 'cargarAdjunto']);
+    Route::get('/documentos/persona/{persona_id}/{tipo_documento_id}/{id_tabla}', [DocumentoDigitalController::class, 'documentoTablaPersonaId']);
+    Route::get('/documentos/tipo/{persona_id}/{tipo_documento_id}', [DocumentoDigitalController::class, 'documentoPersonaId']);
+
+    Route::get('/cursos-personas', [CursoController::class, 'index']);
+    Route::post('/cursos-personas', [CursoController::class, 'store']);
+    Route::get('/cursos-personas/{id}', [CursoController::class, 'show']);
+    Route::put('/cursos-personas/{id}', [CursoController::class, 'update']);
+    Route::delete('/cursos-personas/{id}', [CursoController::class, 'destroy']);
+    Route::get('/cursos-personas/persona/{persona_id}/{tipo}', [CursoController::class, 'cursoTipoPersonaId']);
+
 
 
 });

@@ -4,10 +4,20 @@ namespace App\Http\Controllers\Api\Rh\Trn;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\RhTrnCurso;
+use App\Models\Rh\Trn\Curso;
 
 class CursoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only('index');
+        $this->middleware('auth:sanctum')->only('store');
+        $this->middleware('auth:sanctum')->only('show');
+        $this->middleware('auth:sanctum')->only('update');
+        $this->middleware('auth:sanctum')->only('destroy');
+        $this->middleware('auth:sanctum')->only('cursoTipoPersonaId');
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = RhTrnCurso::all();
+        $cursos = Curso::all();
 
         return response()->json([
             'status'    => true,
@@ -32,7 +42,7 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        $curso = new RhTrnCurso();
+        $curso = new Curso();
         $curso->persona_id                    = $request->persona_id;
         $curso->estado_id                     = $request->estado_id;
         $curso->institucion_id                = $request->institucion_id;
@@ -59,7 +69,7 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        $curso = RhTrnCurso::find($id);
+        $curso = Curso::find($id);
 
         if (is_null($curso)) {
             return response()->json([
@@ -84,7 +94,7 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $curso = RhTrnCurso::find($id);
+        $curso = Curso::find($id);
 
         if (is_null($curso)) {
             return response()->json([
@@ -119,7 +129,7 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        $curso = RhTrnCurso::find($id);
+        $curso = Curso::find($id);
 
         if (is_null($curso)) {
             return response()->json([
@@ -137,7 +147,7 @@ class CursoController extends Controller
     
     public function cursoTipoPersonaId($persona_id, $tipo)
     {
-        $curso = RhTrnCurso::where('persona_id', $persona_id)->where('tipo', $tipo)->where('vigente', '=', 'true')->with('persona', 'estado', 'institucion')->get();
+        $curso = Curso::where('persona_id', $persona_id)->where('tipo', $tipo)->where('vigente', '=', 'true')->with('persona', 'estado', 'institucion')->get();
 
         if (is_null($curso)) {
             return response()->json([

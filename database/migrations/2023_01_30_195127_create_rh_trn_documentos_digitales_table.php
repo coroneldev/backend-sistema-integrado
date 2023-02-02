@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('tipo_documento_id')->references('id')->on('rh_cl_tipos_documentos');
             $table->unsignedBigInteger('persona_id')->nullable();
             $table->foreign('persona_id')->references('id')->on('rh_trn_personas');
-            /*$table->unsignedBigInteger('usuario_validador_id')->nullable();
-            $table->foreign('usuario_validador_id')->references('id')->on('users');*/
+            $table->unsignedBigInteger('usuario_validador_id')->nullable();
+            $table->foreign('usuario_validador_id')->references('id')->on('users');
             $table->integer('id_registro_tabla')->nullable();
             $table->string('enlace', 255)->nullable();
             $table->string('nombre_archivo', 255)->nullable();
