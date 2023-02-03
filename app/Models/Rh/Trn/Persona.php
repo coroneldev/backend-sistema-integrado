@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+
+use App\Models\Rh\Cl\EstadoCivil;
+use App\Models\Rh\Cl\Genero;
+use App\Models\Rh\Cl\Pais;
+use App\Models\Rh\Cl\Ciudad;
+use App\Models\Rh\Trn\DatoLaboral;
+use App\Models\Rh\Trn\ExperienciaLaboral;
+use App\Models\Rh\Trn\Curso;
+use App\Models\Rh\Trn\Idioma;
+
+
 class Persona extends Model
 {
     use HasFactory;
@@ -43,7 +55,6 @@ class Persona extends Model
         'identificador_dato_laboral',
     ];
 
-    /*revisar  la funcion de usuario */
     public function usuario()
     {
         return $this->belongsTo(User::class, 'user_id');

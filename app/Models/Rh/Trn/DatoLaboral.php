@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Rh\Trn\Persona;
+use App\Models\Rh\Cl\TipoContrato;
+use App\Models\Rh\Cl\EstructuraOrganizacional;
+use App\Models\Rh\Cl\Horario;
+use App\Models\Rh\Cl\Puesto;
+use App\Models\Rh\Cl\OrganismoFinanciador;
+use App\Models\Rh\Cl\CategoriaViaje;
+use App\Models\Rh\Cl\Clasificacion;
+use App\Models\Rh\Cl\Identificador;
+
+
 class DatoLaboral extends Model
 {
     use HasFactory;
@@ -67,7 +78,7 @@ class DatoLaboral extends Model
     }
     public function clasificacion()
     {
-        return $this->belongsTo(RhClClasificacion::class, 'clasificacion_id');
+        return $this->belongsTo(Clasificacion::class, 'clasificacion_id');
     }
     public function identificador()
     {

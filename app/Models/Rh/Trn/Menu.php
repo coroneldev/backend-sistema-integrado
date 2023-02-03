@@ -12,4 +12,10 @@ class Menu extends Model
     use SoftDeletes;
 
     protected $table = 'rh_trn_menus';
+    protected $fillable = [
+        'sistema_id',
+        'nombre',
+        'url',
+        'vigente',
+    ];
 }

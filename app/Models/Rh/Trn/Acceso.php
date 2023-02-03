@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+use App\Models\Rh\Cl\Rol;
+use App\Models\Rh\Trn\Menu;
+
 class Acceso extends Model
 {
     use HasFactory;
@@ -18,16 +22,16 @@ class Acceso extends Model
         'vigente',
     ];
 
-    public function usuario()
+    public function usuarios()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasMany(User::class, 'user_id');
     }
     public function rol()
     {
-        return $this->belongsTo(Rol::class, 'roles_id');
+        return $this->belongsTo(Rol::class, 'rol_id');
     }
-    public function sistema()
+    public function menus()
     {
-        return $this->belongsTo(Sistema::class, 'sistema_id');
+        return $this->hasMany(Menu::class, 'menu_id');
     }
 }

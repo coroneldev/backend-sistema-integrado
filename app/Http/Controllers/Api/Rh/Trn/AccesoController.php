@@ -137,11 +137,11 @@ class AccesoController extends Controller
 
     public function accesoIdUsuario($user_id)
     {
-        $usuarioPregistrado = Acceso::where('user_id', $user_id)->with('usuario', 'rol', 'sistema')->firstb();
+        $usuario = Acceso::where('user_id', $user_id)->with('rol')->first();
         return response()->json([
             'status'    => true,
-            'message'   => 'Registro de persona preregistrada, recuperada exitosamente',
-            'data'      => $usuarioPregistrado
+            'message'   => 'Registro, recuperado exitosamente',
+            'data'      => $usuario
         ], 200);
     }
 }

@@ -357,15 +357,12 @@ class PersonaController extends Controller
     }
     public function personaUsuarioId($user_id)
     {
-        //$usuarioPregistrado = Persona::where('user_id', $user_id)->with('usuario')->first();
-        $usuarioPregistrado = Persona::where('user_id', $user_id)->get();
+        $usuarioPregistrado = Persona::where('user_id', $user_id)->with('usuario')->first();
         return response()->json([
             'status'    => true,
             'message'   => 'Registro de persona preregistrada, recuperada exitosamente',
             'data'      => $usuarioPregistrado
         ], 200);
     }
-
-
 
 }

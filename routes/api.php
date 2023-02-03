@@ -38,6 +38,7 @@ use App\Http\Controllers\Api\Rh\Trn\ParentescosController;
 use App\Http\Controllers\Api\Rh\Trn\DeclaracionJuradaController;
 use App\Http\Controllers\Api\Rh\Trn\DocumentoDigitalController;
 use App\Http\Controllers\Api\Rh\Trn\CursoController;
+use App\Http\Controllers\Api\Rh\Trn\DatoLaboralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,7 @@ Route::prefix('sys')->group(function () {
     Route::get('/accesos/{id}', [AccesoController::class, 'show']);
     Route::put('/accesos/{id}', [AccesoController::class, 'update']);
     Route::delete('/accesos/{id}', [AccesoController::class, 'destroy']);
+    Route::get('/accesos/user/{user_id}', [AccesoController::class, 'accesoIdUsuario']);
 
     Route::post('usuarios/salir', [UserController::class, 'salir']);
 });
@@ -240,6 +242,25 @@ Route::prefix('rh')->group(function () {
     Route::put('/cursos-personas/{id}', [CursoController::class, 'update']);
     Route::delete('/cursos-personas/{id}', [CursoController::class, 'destroy']);
     Route::get('/cursos-personas/persona/{persona_id}/{tipo}', [CursoController::class, 'cursoTipoPersonaId']);
+
+
+
+
+
+
+
+
+
+
+    /*Datos Laborales*/
+    Route::get('/datos-laborales', [DatoLaboralController::class, 'index']);
+    Route::post('/datos-laborales', [DatoLaboralController::class, 'store']);
+    Route::get('/datos-laborales/{id}', [DatoLaboralController::class, 'show']);
+    Route::put('/datos-laborales/{id}', [DatoLaboralController::class, 'update']);
+    Route::delete('/datos-laborales/{id}', [DatoLaboralController::class, 'destroy']);
+    Route::get('/datos-laborales/persona/{persona_id}', [DatoLaboralController::class, 'datoLaboralPersonaId']);
+
+    Route::get('/datos-laborales/funcionario/{persona_id}', [DatoLaboralController::class, 'EstadoFuncionario']);
 
 
 
