@@ -71,7 +71,9 @@ class DatoLaboralController extends Controller
                 'message'   => 'Registro exitoso Nuevo funcionario',
                 'data'      => $datoLaboral
             ], 201);
+
         } else {
+            
             $funcionario->vigente                               = false;
             $funcionario->save();
             $datoLaboral->tipo_contrato_id                      = $request->tipo_contrato_id;
