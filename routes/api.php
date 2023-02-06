@@ -39,6 +39,9 @@ use App\Http\Controllers\Api\Rh\Trn\DeclaracionJuradaController;
 use App\Http\Controllers\Api\Rh\Trn\DocumentoDigitalController;
 use App\Http\Controllers\Api\Rh\Trn\CursoController;
 use App\Http\Controllers\Api\Rh\Trn\DatoLaboralController;
+use App\Http\Controllers\Api\Rh\Trn\IdiomasController;
+use App\Http\Controllers\Api\Rh\Trn\FormacionAcademicaController;
+use App\Http\Controllers\Api\Rh\Trn\ExperienciaLaboralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,7 +206,6 @@ Route::prefix('rh')->group(function () {
     Route::delete('/idiomas/{id}', [IdiomaController::class, 'destroy']);
 
     /*Transacciones*/ 
-    /*Registro de Personas*/
     Route::get('/personas', [PersonaController::class, 'index']);
     Route::post('/personas', [PersonaController::class, 'store']);
     Route::get('/personas/{id}', [PersonaController::class, 'show']);
@@ -243,16 +245,27 @@ Route::prefix('rh')->group(function () {
     Route::delete('/cursos-personas/{id}', [CursoController::class, 'destroy']);
     Route::get('/cursos-personas/persona/{persona_id}/{tipo}', [CursoController::class, 'cursoTipoPersonaId']);
 
+    Route::get('/idiomas-personas', [IdiomasController::class, 'index']);
+    Route::post('/idiomas-personas', [IdiomasController::class, 'store']);
+    Route::get('/idiomas-personas/{id}', [IdiomasController::class, 'show']);
+    Route::put('/idiomas-personas/{id}', [IdiomasController::class, 'update']);
+    Route::delete('/idiomas-personas/{id}', [IdiomasController::class, 'destroy']);
+    Route::get('/idiomas-personas/persona/{persona_id}', [IdiomasController::class, 'idiomaPersonaId']);
+    
+    Route::get('/formaciones-academicas', [FormacionAcademicaController::class, 'index']);
+    Route::post('/formaciones-academicas', [FormacionAcademicaController::class, 'store']);
+    Route::get('/formaciones-academicas/{id}', [FormacionAcademicaController::class, 'show']);
+    Route::put('/formaciones-academicas/{id}', [FormacionAcademicaController::class, 'update']);
+    Route::delete('/formaciones-academicas/{id}', [FormacionAcademicaController::class, 'destroy']);
+    Route::get('/formaciones-academicas/persona/{persona_id}', [FormacionAcademicaController::class, 'formacionPersonaId']);
 
+    Route::get('/experiencias-laborales', [ExperienciaLaboralController::class, 'index']);
+    Route::post('/experiencias-laborales', [ExperienciaLaboralController::class, 'store']);
+    Route::get('/experiencias-laborales/{id}', [ExperienciaLaboralController::class, 'show']);
+    Route::put('/experiencias-laborales/{id}', [ExperienciaLaboralController::class, 'update']);
+    Route::delete('/experiencias-laborales/{id}', [ExperienciaLaboralController::class, 'destroy']);
+    Route::get('/experiencias-laborales/persona/{persona_id}', [ExperienciaLaboralController::class, 'ExperienciaLaboralPersonaId']);
 
-
-
-
-
-
-
-
-    /*Datos Laborales*/
     Route::get('/datos-laborales', [DatoLaboralController::class, 'index']);
     Route::post('/datos-laborales', [DatoLaboralController::class, 'store']);
     Route::get('/datos-laborales/{id}', [DatoLaboralController::class, 'show']);
